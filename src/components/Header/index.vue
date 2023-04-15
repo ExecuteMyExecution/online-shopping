@@ -67,10 +67,14 @@ export default {
             if(this.$route.query) {
                 location.query = this.$route.query;
             }
-            console.log('go');
             this.$router.push(location);
-            // console.log(location);
         }
+    },
+    mounted() {
+        // 通过全局事件总线清除关键字
+        this.$bus.$on('clear', () => {
+            this.keyword = '';
+        })
     }
 }
 </script>
